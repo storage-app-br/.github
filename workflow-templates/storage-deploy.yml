@@ -9,4 +9,4 @@ on:
 jobs:
 
   CD:
-    uses: /storage-app-br/.github/workflows/storage-deploy.yml@master
+    uses: storage-app-br/.github/.github/workflows/storage-deploy.yml@main
