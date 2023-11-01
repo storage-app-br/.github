@@ -1,0 +1,8 @@
+{
+    "name": "Storage APP Deploy on GKE",
+    "description": "Template para o projeto Storage APP para fazer o deploy no GKE.",
+    "categories": [
+        "K8s",
+        "GCE - GKE"
+    ]
+}
