@@ -1,5 +1,9 @@
 on:
   workflow_call:
+    inputs:
+      image_version:
+        required: true
+        type: string
 
 jobs:
 
