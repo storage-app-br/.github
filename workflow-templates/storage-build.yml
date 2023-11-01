@@ -9,18 +9,4 @@ jobs:
   CI:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
-      - name: Docker Login
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: Dockerfile
-          push: true
-          tags: igorlage/${{ env.IMAGE_NAME }}:0.1.${{ steps.set_run_number.outputs.run_number }},igorlage/${{ env.IMAGE_NAME }}:latest
+        uses: storage-app-br/.github/workflows/storage-build.yml@master
