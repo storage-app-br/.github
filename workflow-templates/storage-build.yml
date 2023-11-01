@@ -2,10 +2,10 @@ name: Storage Build and Push
 
 on:
   pull_request:
-    branches: [$default-branch]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
 
   CI:
-    uses: uses: storage-app-br/.github/.github/workflows/storage-build.yml@main
+    uses: storage-app-br/.github/.github/workflows/storage-build.yml@main
