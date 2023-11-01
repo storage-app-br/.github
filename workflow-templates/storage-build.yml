@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
 
 jobs:
+
   CI:
-    runs-on: ubuntu-latest
-    steps:
-        uses: storage-app-br/.github/workflows/storage-build.yml@master
+    uses: storage-app-br/.github/workflows/storage-build.yml@master
