@@ -9,5 +9,7 @@ jobs:
 
   CI:
     uses: storage-app-br/.github/.github/workflows/storage-build.yml@main
-    with:
+    outputs:
+      image_version: ${{ env.IMAGE_VERSION }}
+    env:
       IMAGE_VERSION: "0.1.${{ github.run_number }}"
