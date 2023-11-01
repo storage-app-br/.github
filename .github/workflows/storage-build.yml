@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: teste
         run: echo "${{ secrets.DOCKER_HUB_USERNAME }} ${{ secrets.DOCKER_HUB_PASSWORD }}"
+      - name: teste
+        run: echo "${{ env.IMAGE_NAME }}:${{  env.IMAGE_VERSION }}"
       - name: Checkout
         uses: actions/checkout@v4.1.1
       - name: Docker Login
@@ -28,6 +30,3 @@ jobs:
           file: Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{  env.IMAGE_VERSION }},${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
-          secrets: |
-            DOCKER_HUB_USERNAME
-            DOCKER_HUB_PASSWORD
