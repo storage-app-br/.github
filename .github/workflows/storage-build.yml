@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: teste
+        run: echo "${{ secrets.DOCKER_HUB_USERNAME }} ${{ secrets.DOCKER_HUB_PASSWORD }}"
       - name: Checkout
         uses: actions/checkout@v4.1.1
       - name: Docker Login
