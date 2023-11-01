@@ -23,4 +23,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: igorlage/${{ env.IMAGE_NAME }}:0.1.${{ steps.set_run_number.outputs.run_number }},igorlage/${{ env.IMAGE_NAME }}:latest
+          tags: igorlage/${{ env.IMAGE_NAME }}:$IMAGE_VERSION,igorlage/${{ env.IMAGE_NAME }}:latest
+          secrets: |
+            DOCKER_HUB_USERNAME
+            DOCKER_HUB_PASSWORD
