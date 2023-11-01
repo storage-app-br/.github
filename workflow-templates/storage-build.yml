@@ -8,4 +8,4 @@ on:
 jobs:
 
   CI:
-    uses: storage-app-br/.github/workflows/storage-build.yml@main
+    uses: /storage-app-br/.github/workflows/storage-build.yml@main
