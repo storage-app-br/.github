@@ -26,28 +26,28 @@ jobs:
       run: echo ${{ inputs.IMAGE_VERSION }}
 
 
-  # build-push:
-  #   runs-on: ubuntu-latest
+  build-push:
+    runs-on: ubuntu-latest
 
-    # steps:
-    #   - name: teste
-    #     run: echo "${{ secrets.DOCKER_HUB_USERNAME }} ${{ secrets.DOCKER_HUB_PASSWORD }}"
-    #   - name: teste
-    #     run: echo "${{ vars.IMAGE_NAME }}:${{  vars.IMAGE_VERSION }}"
-    #   - name: Checkout
-    #     uses: actions/checkout@v4.1.1
-    #   - name: Docker Login
-    #     uses: docker/login-action@v1
-    #     with:
-    #       username: ${{ secrets.DOCKER_HUB_USERNAME }}
-    #       password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+    steps:
+      - name: teste
+        run: echo "${{ secrets.DOCKER_HUB_USERNAME }} ${{ secrets.DOCKER_HUB_PASSWORD }}"
+      - name: teste
+        run: echo "${{ vars.IMAGE_NAME }}:${{  inputs.IMAGE_VERSION }}"
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Docker Login
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
-    #   - name: Build and push Docker images
-    #     uses: docker/build-push-action@v2
-    #     with:
-    #       context: .
-    #       file: Dockerfile
-    #       push: true
-    #       tags: |
-    #         ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${{ vars.IMAGE_VERSION }}
-    #         ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:latest
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${{ inputs.IMAGE_VERSION }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:latest
