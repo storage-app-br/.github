@@ -8,8 +8,6 @@ on:
     secrets:
       DOCKER_HUB_USERNAME:
         required: true
-      DOCKER_HUB_PASSWORD:
-        required: true
       GCP_SA_KEY:
         required: true
       GKE_CLUSTER_NAME:
