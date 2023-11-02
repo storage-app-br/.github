@@ -19,8 +19,8 @@ jobs:
   gke-deploy:
     runs-on: ubuntu-latest
 
-    environment:
-      name: deploy
+    # environment:
+    #   name: deploy
 
     steps:
       - name: Checkout
