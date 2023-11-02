@@ -1,8 +1,10 @@
 {
-    "name": "Storage APP Build, Push and Deploy on Docker Hub",
-    "description": "Template para fazer o build e push no DockerHub",
+    "name": "Storage APP Build, Push and Deploy",
+    "description": "Template para fazer o build e push no DockerHub e deploy no GKE",
     "categories": [
         "NodeJS",
-        "Docker"
+        "Docker",
+        "K8s",
+        "GCE-GKE"
     ]
 }

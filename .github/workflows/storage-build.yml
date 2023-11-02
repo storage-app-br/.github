@@ -10,7 +10,6 @@ on:
       DOCKER_HUB_PASSWORD:
         required: true
       
-
 jobs:
 
   build-push:

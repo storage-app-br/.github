@@ -1,9 +1,22 @@
 on:
   workflow_call:
+    inputs:
+      image_version:
+        required: true
+        type: string
+    
+    secrets:
+      DOCKER_HUB_USERNAME:
+        required: true
+      DOCKER_HUB_PASSWORD:
+        required: true
+      GCP_SA_KEY:
+        required: true
+      CLUSTER_NAME:
+        required: true
 
 jobs:
-
-  CD:
+  gke-deploy:
     runs-on: ubuntu-latest
 
     environment:
@@ -22,16 +35,16 @@ jobs:
         uses: simenandre/setup-gke-gcloud-auth-plugin@v1.1.2
 
       - name: kubeconfig
-        run: gcloud container clusters get-credentials my-gek-cluster --zone us-central1-c --project storage-app-0001
+        run: gcloud container clusters get-credentials ${{ secrets.GKE_CLUSTER_NAME }} --zone ${{ secrets.GKE_ZONE }} --project ${{ secrets.GKE_PROJECT_ID }}
 
-      - name: Clone gcp-cicd-terraform repository
+      - name: Clone gcp repository
         run: |
-          git clone https://github.com/igor-rl/gcp-cicd-terraform.git
+          git clone https://github.com/storage-app-br/gcp.git
 
       - name: Deploy to Kubernetes cluster in Another Repository
         uses: Azure/k8s-deploy@v4.9
         with:
           manifests: |
-            gcp-cicd-terraform/gcp/my-cluster-gke/k8s/projects/storage-app/${{ env.IMAGE_NAME }}/
+            gcp/${{ secrets.GKE_PROJECT_ID }}/${{ secrets.GKE_CLUSTER_NAME }}/k8s/projects/storage-app/${{ vars.IMAGE_NAME }}/
           images: |
-            docker.io/igorlage/${{ env.IMAGE_NAME }}:0.1.${{ github.run_number }}
+            docker.io/igorlage/${{ vars.IMAGE_NAME }}:${{  inputs.IMAGE_VERSION }}
