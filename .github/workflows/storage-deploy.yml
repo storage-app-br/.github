@@ -12,7 +12,11 @@ on:
         required: true
       GCP_SA_KEY:
         required: true
-      CLUSTER_NAME:
+      GKE_CLUSTER_NAME:
+        required: true
+      GKE_ZONE:
+        required: true
+      GKE_PROJECT_ID:
         required: true
 
 jobs:
