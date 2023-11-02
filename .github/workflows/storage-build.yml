@@ -13,19 +13,6 @@ on:
 
 jobs:
 
-  check-secrets:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Exibir valor da secret DOCKER_HUB_USERNAME
-      run: echo ${{ secrets.DOCKER_HUB_USERNAME }}
-    - name: Exibir valor da secret DOCKER_HUB_PASSWORD
-      run: echo ${{ secrets.DOCKER_HUB_PASSWORD }}
-    - name: Exibir valor da variável IMAGE_NAME
-      run: echo ${{ vars.IMAGE_NAME }}
-    - name: Exibir versão da imagem
-      run: echo ${{ inputs.IMAGE_VERSION }}
-
-
   build-push:
     runs-on: ubuntu-latest
 
