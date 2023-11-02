@@ -4,12 +4,20 @@ on:
       image_version:
         required: true
         type: string
+      image_name:
+        required: true
+        type: string
+      docker_hub_username:
+        required: true
+        type: string
+      docker_hub_password:
+        required: true
+        type: string
 
 jobs:
-
   build-push:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: teste
         run: echo "${{ env.DOCKER_HUB_USERNAME }} ${{ env.DOCKER_HUB_PASSWORD }}"
