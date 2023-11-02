@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   CI:
     uses: storage-app-br/.github/.github/workflows/storage-build.yml@main
     with:
@@ -22,3 +21,7 @@ jobs:
     secrets:
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
       DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+      GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+      GKE_CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
+      GKE_ZONE: ${{ secrets.GKE_ZONE }}
+      GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
