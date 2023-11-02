@@ -16,10 +16,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: teste
-        run: echo "${{ secrets.DOCKER_HUB_USERNAME }} ${{ secrets.DOCKER_HUB_PASSWORD }}"
-      - name: teste
-        run: echo "${{ vars.IMAGE_NAME }}:${{  inputs.IMAGE_VERSION }}"
       - name: Checkout
         uses: actions/checkout@v4.1.1
       - name: Docker Login
