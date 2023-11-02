@@ -49,6 +49,6 @@ jobs:
         uses: Azure/k8s-deploy@v4.9
         with:
           manifests: |
-            gcp/${{ secrets.GKE_PROJECT_ID }}/${{ secrets.GKE_CLUSTER_NAME }}/k8s/projects/storage-app/${{ vars.IMAGE_NAME }}/
+            gcp/${{ secrets.GKE_PROJECT_ID }}/${{ secrets.GKE_CLUSTER_NAME }}/k8s/projects/${{ vars.IMAGE_NAME }}/
           images: |
-            docker.io/igorlage/${{ vars.IMAGE_NAME }}:${{  inputs.IMAGE_VERSION }}
+            docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${{  inputs.IMAGE_VERSION }}
