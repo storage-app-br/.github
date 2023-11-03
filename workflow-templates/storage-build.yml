@@ -16,12 +16,13 @@ jobs:
 
   CD:
     needs: CI
-    uses: storage-app-br/.github/.github/workflows/storage-deploy.yml@main
+    uses: storage-app-br/gcp/.github/workflows/gke-deploy.yml@main
     with:
       image_version: 0.1.${{ github.run_number }}
     secrets:
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
       GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+      GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
       GKE_CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
       GKE_ZONE: ${{ secrets.GKE_ZONE }}
-      GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
+      PERSON_TOKEN: ${{ secrets.PERSON_TOKEN }}
