@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: Dockerfile
+          file: docker/Dockerfile.prod
           push: true
           tags: |
             ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${{ inputs.IMAGE_VERSION }}
