@@ -25,17 +25,11 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
-      - name: Purge Cache
-        run: |
-          rm -rf node_modules
-          yarn install
-
       - name: Build and push Docker images
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./docker/Dockerfile.prod
-          push: true
-          tags: |
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${{ inputs.IMAGE_VERSION }}
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:latest
+        run: |
+          docker build --no-cache -t ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${{ inputs.IMAGE_VERSION }} -f ./docker/Dockerfile.prod .
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${{ inputs.IMAGE_VERSION }}
+          docker build --no-cache -t ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:latest -f ./docker/Dockerfile.prod .
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.IMAGE_NAME }}:latest
+        env:
+          DOCKER_BUILDKIT: 1
